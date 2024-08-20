@@ -1,31 +1,35 @@
 import Processo from "../../abstracoes/processo";
 import Armazem from "../../dominio/armazem";
+import ImpressaorCliente from "../../impressores/impressorCliente";
 import Cliente from "../../modelos/cliente";
 
 export default class BuscarCliente extends Processo {
+    private imprimir: boolean;
 
-    constructor() {
+    constructor(imprimir: boolean = false) {
         super();
         this.execucao = true;
+        this.imprimir = imprimir;
     }
-
+    
     processar(): Cliente | null {
         let armazem = Armazem.InstanciaUnica;
 
-        while (this.execucao) {
-            let numeroDocumento = this.entrada.receberTexto('Digite o número do documento para buscar OU Digite 0 para cancelar a busca \n');
+        let numeroDocumento = this.entrada.receberTexto('Digite o número do documento para buscar OU Digite 0 para cancelar a busca:');
 
-            if (numeroDocumento === '0') {
-                this.execucao = false;
+        if (numeroDocumento === '0') {
+            this.execucao = false;
+        }
+
+        let cliente = armazem.Clientes.find(c => c.Documentos.some(d => d.Numero === numeroDocumento));
+
+        if (cliente == null) {
+            console.log('Cliente não encontrado :(');
+        } else {
+            if(this.imprimir){
+                new ImpressaorCliente(cliente).imprimir();
             }
-
-            let cliente = armazem.Clientes.find(c => c.Documentos.some(d => d.Numero === numeroDocumento));
-
-            if (cliente == null) {
-                console.log('Cliente não encontrado :(');
-            } else {
-                return cliente;
-            }
+            return cliente;
         }
 
         return null;

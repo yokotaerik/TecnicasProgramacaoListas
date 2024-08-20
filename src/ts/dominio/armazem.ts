@@ -22,7 +22,7 @@ export default class Armazem {
     }
 
     private inicializarClientes() {
-        const documento1 = new Documento("123.456.789-00", TipoDocumento.CPF, new Date("2010-01-01"));
+        const documento1 = new Documento("12345678900", TipoDocumento.CPF, new Date("2010-01-01"));
         const telefone1 = new Telefone("11", "98765-4321");
         const endereco1 = new Endereco("Rua A", "Bairro A", "Cidade A", "Estado A", "Brasil", "12345-678");
 
@@ -31,7 +31,7 @@ export default class Armazem {
         cliente1.Telefones.push(telefone1);
         cliente1.Endereco = endereco1;
 
-        const documento2 = new Documento("987.654.321-00", TipoDocumento.CPF, new Date("2012-02-02"));
+        const documento2 = new Documento("98765432100", TipoDocumento.CPF, new Date("2012-02-02"));
         const telefone2 = new Telefone("21", "87654-3210");
 
         const cliente2 = new Cliente("Nome2", "NomeSocial2", new Date("1992-02-02"));

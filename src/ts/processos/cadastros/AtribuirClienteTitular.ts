@@ -1,14 +1,13 @@
-import Processo from "../abstracoes/processo";
-import Armazem from "../dominio/armazem";
-import MenuTipoDocumento from "../menus/menuTipoDocumento";
-import Cliente from "../modelos/cliente";
+import Processo from "../../abstracoes/processo";
+import Armazem from "../../dominio/armazem";
+import MenuTipoDocumento from "../../menus/menuTipoDocumento";
+import Cliente from "../../modelos/cliente";
 
 export default class AtribuirClienteTitular extends Processo {
     private cliente: Cliente
     constructor(cliente: Cliente) {
         super()
         this.cliente = cliente
-        this.menu = new MenuTipoDocumento()
         this.execucao = true
     }
 

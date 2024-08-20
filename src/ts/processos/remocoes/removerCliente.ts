@@ -5,25 +5,53 @@ import BuscarCliente from "../buscas/buscarCliente";
 
 export default class RemoverCliente extends Processo {
 
-    constructor(){
+    constructor(opcao: number) {
         super()
+        this.opcao = opcao
     }
 
     processar(): void {
         console.log('Iniciando remoção do cliente...')
-
-        let cliente = new BuscarCliente().processar()
-
-                
-
-        if(cliente == null){
-            return
-        }
-        
         let armazem = Armazem.InstanciaUnica
 
-        armazem.Clientes.splice(armazem.Clientes.indexOf(cliente), 1)
+        if(this.opcao == 1)
+        {
+            let cliente = new BuscarCliente().processar()
 
-        console.log('Cliente removido com sucesso!')
+            if(cliente == null){
+                return
+            }
+            if(cliente.isTitular() == false){
+                console.log('Cliente não titular!')
+                return
+            }
+
+            cliente.Dependentes.forEach(c => {
+                armazem.Clientes.splice(armazem.Clientes.indexOf(c), 1)
+            })
+
+            armazem.Clientes.splice(armazem.Clientes.indexOf(cliente), 1)
+
+            console.log('Cliente e seus dependentes removidos com sucesso!')
+        }
+
+        if(this.opcao == 2)
+        {
+            let cliente = new BuscarCliente().processar()
+            if(cliente == null){
+                return
+            }
+            if(cliente.isTitular() == true){
+                console.log('Cliente titular!')
+                return
+            }
+    
+            cliente.Titular.Dependentes.splice(cliente.Titular.Dependentes.indexOf(cliente), 1)
+    
+            armazem.Clientes.splice(armazem.Clientes.indexOf(cliente), 1)
+    
+            console.log('Cliente removido com sucesso!')
+        }
+ 
     }
 }

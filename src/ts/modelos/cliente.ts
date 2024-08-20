@@ -52,4 +52,8 @@ export default class Cliente {
     public removerTitularEDepedentes() {
         this.dependentes = []
     }
+
+    public isTitular() {
+        return this.titular == undefined
+    }
 }

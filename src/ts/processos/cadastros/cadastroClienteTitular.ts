@@ -1,10 +1,12 @@
-import Processo from "../abstracoes/processo";
-import Armazem from "../dominio/armazem";
-import Cliente from "../modelos/cliente";
-import CadastrarDocumentosCliente from "./cadastrarDocumentosCliente";
-import CadastroEnderecoTitular from "./cadastroEnderecoTitular";
+import Processo from "../../abstracoes/processo"
+import Armazem from "../../dominio/armazem"
+import Cliente from "../../modelos/cliente"
+import CadastrarDocumentosCliente from "./cadastrarDocumentosCliente"
+import CadastroEnderecoTitular from "./cadastroEnderecoTitular"
 
 export default class CadastroClienteTitular extends Processo {
+    entrada: any
+    processo: any
     processar(): void {
         console.log('Iniciando o cadastro de um novo cliente...')
         let nome = this.entrada.receberTexto('Qual o nome do novo cliente?')

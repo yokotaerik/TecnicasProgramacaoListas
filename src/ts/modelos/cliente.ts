@@ -20,6 +20,14 @@ export default class Cliente {
         this.dataCadastro = new Date()
     }
 
+    public set Titular(titular: Cliente) { this.titular = titular }
+    public set Nome(nome: string) { this.nome = nome }
+    public set NomeSocial(nomeSocial: string) { this.nomeSocial = nomeSocial }
+    public set DataNascimento(dataNascimento: Date) { this.dataNascimento = dataNascimento }
+    public set DataCadastro(dataCadastro: Date) { this.dataCadastro = dataCadastro }
+    public set Endereco(endereco: Endereco) { this.endereco = endereco }
+
+
     public get Nome() { return this.nome }
     public get NomeSocial() { return this.nomeSocial }
     public get DataNascimento() { return this.dataNascimento }
@@ -30,5 +38,18 @@ export default class Cliente {
     public get Dependentes() { return this.dependentes }
     public get Titular() { return this.titular }
 
-    public set Endereco(endereco: Endereco) { this.endereco = endereco }
+    public removerDependente(dependente: Cliente) {
+        let index = this.dependentes.indexOf(dependente)
+        if(index >= 0) {
+            this.dependentes.splice(index, 1)
+        }
+    }
+
+    public adicionarDependente(dependente: Cliente) {
+        this.dependentes.push(dependente)
+    }
+
+    public removerTitularEDepedentes() {
+        this.dependentes = []
+    }
 }

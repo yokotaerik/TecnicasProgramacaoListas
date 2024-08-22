@@ -1,3 +1,4 @@
+import Prototipo from "../interfaces/prototipo"
 import Documento from "./documento"
 import Endereco from "./endereco"
 import Telefone from "./telefone"
@@ -55,5 +56,14 @@ export default class Cliente {
 
     public isTitular() {
         return this.titular == undefined
+    }
+
+    public adicionarTelefone(telefone: Telefone) {
+        this.telefones.push(telefone)
+        if(this.isTitular()){
+            this.dependentes.forEach(dependente => {
+                dependente.adicionarTelefone(telefone)
+            })
+        }
     }
 }

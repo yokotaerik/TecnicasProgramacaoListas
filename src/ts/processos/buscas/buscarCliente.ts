@@ -25,6 +25,7 @@ export default class BuscarCliente extends Processo {
 
         if (cliente == null) {
             console.log('Cliente não encontrado :(');
+            this.processar();   
         } else {
             if(this.imprimir){
                 new ImpressaorCliente(cliente).imprimir();

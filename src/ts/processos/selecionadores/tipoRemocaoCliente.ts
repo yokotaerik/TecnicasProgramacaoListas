@@ -1,7 +1,7 @@
 import Processo from "../../abstracoes/processo";
-import MenuTipoListagemClientes from "../../menus/menuTipoListagemClientes";
 import MenuTipoRemoverCliente from "../../menus/menuTipoRemoverCliente";
-import RemoverCliente from "../remocoes/removerCliente";
+import RemoverClienteDependente from "../remocoes/cliente/removerClienteDependente";
+import RemoverClienteTitular from "../remocoes/cliente/removerClienteTitular";
 
 
 export default class TipoRemocaoClientes extends Processo {
@@ -15,10 +15,10 @@ export default class TipoRemocaoClientes extends Processo {
         this.opcao = this.entrada.receberNumero('Qual a opção desejada?')
         switch (this.opcao) {
             case 1:
-                new RemoverCliente(this.opcao).processar()
+                new RemoverClienteTitular().processar()
                 break;
             case 2:
-                new RemoverCliente(this.opcao).processar()
+                new RemoverClienteDependente().processar()
                 break
             default:
                 console.log('Opção não entendida... :(')

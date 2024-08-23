@@ -8,19 +8,21 @@ export default class EdicaoTelefone extends Processo {
     constructor(cliente: Cliente) {
         super();
         this.cliente = cliente;
+        this.execucao = true;
     }
     
     processar(): void {
 
         while(this.execucao){
             this.cliente.Telefones.forEach((telefone, index) => {
-                console.log(`Telefone ${index + 1}: ${new ImpressorTelefone(telefone).imprimir()}`)
+                console.log(`|${index + 1}: ${telefone.Ddd} ${telefone.Numero}`);
             });
     
             let opcao = this.entrada.receberNumero('Qual telefone deseja editar? Digite 0 para sair.');
             if(opcao === 0){
                 console.log('Saindo da edição de telefones...');
                 this.execucao = false;
+                break;
             }            
             
             let telefone = this.cliente.Telefones[opcao - 1];

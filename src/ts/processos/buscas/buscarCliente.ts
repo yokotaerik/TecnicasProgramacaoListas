@@ -19,6 +19,7 @@ export default class BuscarCliente extends Processo {
 
         if (numeroDocumento === '0') {
             this.execucao = false;
+            return null;
         }
 
         let cliente = armazem.Clientes.find(c => c.Documentos.some(d => d.Numero === numeroDocumento));

@@ -30,7 +30,7 @@ export default class TipoListagemClientes extends Processo {
                 break 
             case 5:
                 new BuscarCliente(true).processar() 
-        
+                break
             default:
                 console.log('Opção não entendida... :(')
         }

@@ -13,7 +13,7 @@ export default class EdicaoEndereco extends Processo {
     
     processar(): void {
         while(this.execucao){
-            if(this.cliente.isTitular()){
+            if(!this.cliente.isTitular()){
                 console.log('Cliente dependente. Não é possível editar o endereço.')
                 break
             } 

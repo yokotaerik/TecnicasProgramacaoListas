@@ -18,7 +18,10 @@ export default class CadastroClienteDependente extends Processo {
 
         console.log('Iniciando a busca pelo titular...')
         let titular = new BuscarCliente().processar()
-        if(titular == null) {
+        
+        if(titular == null) return
+        if(titular.isTitular() == false) {
+            console.log('O cliente informado não é um titular. Não é possível cadastrar um dependente.')
             return
         }
         

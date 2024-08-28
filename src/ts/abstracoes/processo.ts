@@ -1,6 +1,5 @@
 import Menu from "../interfaces/menu"
 import Entrada from "../io/entrada"
-import Cliente from "../modelos/cliente"
 
 export default abstract class Processo {
     protected opcao!: number

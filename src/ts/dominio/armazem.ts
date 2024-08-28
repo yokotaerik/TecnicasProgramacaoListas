@@ -4,11 +4,12 @@ import Documento from "../modelos/documento";
 import Telefone from "../modelos/telefone";
 import Endereco from "../modelos/endereco";
 import { TipoDocumento } from "../enumeracoes/TipoDocumento";
+import Acomodacao from "../modelos/acomodacao";
 
 export default class Armazem {
     private static instanciaUnica: Armazem = new Armazem();
     private clientes: Cliente[] = [];
-
+    private acomodacoes: Acomodacao[] = []
     private constructor() {
         this.inicializarClientes();
     }
@@ -19,6 +20,10 @@ export default class Armazem {
 
     public get Clientes() {
         return this.clientes;
+    }
+
+    public get Acomodacoes(){
+        return this.acomodacoes
     }
 
     private inicializarClientes() {

@@ -4,7 +4,7 @@ export default class MenuTipoEditarCliente implements Menu {
     mostrar(): void {
         console.clear()
         console.log(`****************************`)
-        console.log(`| Qual informação deseja editar? `)
+        console.log(`| Qual informação deseja editar? Lembre-se dependentes não pode editar endereços e telefones `)
         console.log(`----------------------`)
         console.log(`| 1 - Nome`)
         console.log(`| 2 - Nome Social`)

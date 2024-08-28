@@ -9,6 +9,7 @@ export default class MenuTipoOpcoesTelefone implements Menu {
         console.log(`| 1 - Adicionar um telefone`)
         console.log(`| 2 - Editar um telefone`)
         console.log(`| 3 - Remover um telefone`)
+        console.log(`| 0 - Voltar`)
         console.log(`----------------------`)
     }
 }

@@ -8,6 +8,7 @@ export default class MenuTipoOpcoesDocumento implements Menu {
         console.log(`----------------------`)
         console.log(`| 1 - Adicionar um documento`)
         console.log(`| 2 - Remover um documento`)
+        console.log(`| 0 - Voltar`)
         console.log(`----------------------`)
     }
 }

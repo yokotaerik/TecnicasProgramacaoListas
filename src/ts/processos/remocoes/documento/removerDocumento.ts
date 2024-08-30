@@ -11,8 +11,13 @@ export default class RemoverDocumento extends Processo {
     }
 
     processar(): void {
+        if(this.cliente.Documentos.length === 1){
+            console.log('O cliente só possui um documento, não é possível deletá-lo.');
+            return;
+        }
+
         this.cliente.Documentos.forEach((documento, index) => {
-            console.log(`Documento ${index + 1}: ${new ImpressorDocumento(documento).imprimir()}`);
+            console.log(`Documento ${index + 1}: \n ${new ImpressorDocumento(documento).imprimir()}`);
         });
 
         let opcao = this.entrada.receberNumero('Qual documento deseja deletar? Digite 0 para sair.');

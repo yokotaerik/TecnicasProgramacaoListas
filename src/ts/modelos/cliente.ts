@@ -66,4 +66,8 @@ export default class Cliente {
             })
         }
     }
+
+    public algumDocumento() {
+        return this.documentos.length > 0
+    }
 }

@@ -18,7 +18,7 @@ export default class EdicaoEndereco extends Processo {
                 break
             } 
 
-            console.log(new ImpressorEndereco(this.cliente.Endereco).imprimir())
+            console.log(new ImpressorEndereco(this.cliente.Endereco).imprimirParaEditar())
     
             let opcao = this.entrada.receberNumero('Qual informação deseja editar? Digite 0 para sair.')
             

@@ -30,6 +30,10 @@ export default class CadastrarDocumentosCliente extends Processo {
                     new CadastroPassaporte(this.cliente).processar()
                     break
                 case 0:
+                    if(!this.cliente.algumDocumento()) {
+                        console.log('É necessário cadastrar pelo menos um documento para o cliente!')
+                        break
+                    }
                     this.execucao = false
                     break
                 default:

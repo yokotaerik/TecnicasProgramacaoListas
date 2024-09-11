@@ -1,4 +1,4 @@
-import Menu from "../interfaces/menu";
+import Menu from "../../interfaces/menu";
 
 export default class MenuTipoRemoverCliente implements Menu {
     mostrar(): void {

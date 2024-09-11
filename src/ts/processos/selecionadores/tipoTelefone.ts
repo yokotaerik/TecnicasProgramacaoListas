@@ -1,11 +1,8 @@
 import Processo from "../../abstracoes/processo";
-import MenuTipoOpcoesTelefone from "../../menus/MenuTipoOpcoesTelefone";
-import MenuTipoRemoverCliente from "../../menus/menuTipoRemoverCliente";
+import MenuTipoOpcoesTelefone from "../../menus/cliente/MenuTipoOpcoesTelefone";
 import Cliente from "../../modelos/cliente";
 import CadastroTelefone from "../cadastros/cadastroTelefone";
 import EdicaoTelefone from "../edicoes/telefone/editarTelefones";
-import RemoverClienteDependente from "../remocoes/cliente/removerClienteDependente";
-import RemoverClienteTitular from "../remocoes/cliente/removerClienteTitular";
 import RemoverTelefone from "../remocoes/telefone/removerTelefone";
 
 

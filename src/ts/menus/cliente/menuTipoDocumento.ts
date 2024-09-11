@@ -1,4 +1,4 @@
-import Menu from "../interfaces/menu";
+import Menu from "../../interfaces/menu";
 
 export default class MenuTipoDocumento implements Menu {
     mostrar(): void {

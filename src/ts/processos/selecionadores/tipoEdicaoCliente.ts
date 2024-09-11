@@ -1,10 +1,8 @@
 import Processo from "../../abstracoes/processo";
-import MenuTipoEditarCliente from "../../menus/menuTipoEditarCliente";
-import MenuTipoOpcoesTelefone from "../../menus/MenuTipoOpcoesTelefone";
+import MenuTipoEditarCliente from "../../menus/cliente/menuTipoEditarCliente";
 import BuscarCliente from "../buscas/buscarCliente";
 import EdicaoDadosBasicosCliente from "../edicoes/cliente/editarDadosBasicosCliente";
 import EdicaoEndereco from "../edicoes/endereco/editarEnderecoCliente";
-import EdicaoTelefone from "../edicoes/telefone/editarTelefones";
 import TipoDocumento from "./tipoDocumentos";
 import TipoTelefone from "./tipoTelefone";
 

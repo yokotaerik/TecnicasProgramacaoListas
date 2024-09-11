@@ -1,5 +1,5 @@
 import Processo from "../../abstracoes/processo"
-import MenuTipoOpcoesDocumento from "../../menus/menuTipoOpcoesDocumentos"
+import MenuTipoOpcoesDocumento from "../../menus/cliente/menuTipoOpcoesDocumentos"
 import Cliente from "../../modelos/cliente"
 import CadastrarDocumentosCliente from "../cadastros/cadastrarDocumentosCliente"
 import RemoverDocumento from "../remocoes/documento/removerDocumento"

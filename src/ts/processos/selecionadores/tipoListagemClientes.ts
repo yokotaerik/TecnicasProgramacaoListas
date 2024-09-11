@@ -1,9 +1,9 @@
 import Processo from "../../abstracoes/processo";
-import MenuTipoListagemClientes from "../../menus/menuTipoListagemClientes";
+import MenuTipoListagemClientes from "../../menus/cliente/menuTipoListagemClientes";
 import BuscarCliente from "../buscas/buscarCliente";
 import buscarDepedentes from "../buscas/buscarDepedentes";
 import buscarTitularDoCliente from "../buscas/buscarTitular";
-import ListagemTitulares from "../listagemTitulares";
+import ListagemTitulares from "../buscas/listagemTitulares";
 
 export default class TipoListagemClientes extends Processo {
     constructor(){
@@ -16,8 +16,7 @@ export default class TipoListagemClientes extends Processo {
         this.opcao = this.entrada.receberNumero('Qual a opção desejada?')
         switch (this.opcao) {
             case 1:
-                this.processo = new ListagemTitulares()
-                this.processo.processar()
+                new ListagemTitulares().processar()
                 break;
             case 2:
                 new buscarDepedentes(2).processar()

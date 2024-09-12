@@ -1,9 +1,10 @@
 import { Cliente, Telefone } from "@/types/clienteTypes";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 const TelefonesCadastro = () => {
-  const [telefones, setTelefones] = useState<Telefone[]>([]);
+  const [telefones, setTelefones] = useState<Telefone[]>([{ id: "12321", ddd: "11", numero: "999999999" }, { id: "12322", ddd: "11", numero: "999999999" }]);
   const [cliente, setCliente] = useState<Cliente>({
     id: 0,
     nome: "Gerson Penha",
@@ -11,6 +12,7 @@ const TelefonesCadastro = () => {
     dataCadastro: new Date(),
     documentos: [],
     endereco: {
+      id: "",
       rua: "",
       bairro: "",
       cidade: "",
@@ -18,69 +20,86 @@ const TelefonesCadastro = () => {
       pais: "",
       codigoPostal: "",
     },
-    telefones: [],
+    telefones: [  ],
     dependentes: [],
   });
   const [ddd, setDdd] = useState("");
   const [numero, setNumero] = useState("");
+  9;
+  const router = useRouter();
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
 
-  return (
-    <div>
-      <h1>{cliente.nome}</h1>
-      <h2>Telefones</h2>
-      <ul>
-        {telefones.map((telefone, index) => (
-          <li key={index}>
-            <div>
-              {telefone.ddd} {telefone.numero}
-            </div>
-            <div>
-                <button>Editar</button>
-                <button>Excluir</button>
-            </div>
-          </li>
-        ))}
-      </ul>
-      <p>Adicionar novo número</p>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="numero">DDD e numero:</label>
-          <input
-            type="text"
-            id="ddd"
-            value={ddd}
-            onChange={(event) => setDdd(event.target.value)}
-          />
-          <input
-            type="text"
-            id="numero"
-            value={numero}
-            onChange={(event) => setNumero(event.target.value)}
-          />
+  if (cliente.titular == undefined) {
+    return (
+      <div>
+        <h1 className="titulo_formulario">{cliente.nome}</h1>
+        <h2 className="subtitulo">Telefones</h2>
+        <ul>
+          {telefones.map((telefone, index) => (
+            <li key={index} className="flex items-center gap-4">
+              <div className="texto_comum">
+                ({telefone.ddd}) {telefone.numero}
+              </div>
+              <div className="flex gap-2">
+                <button className="botao_editar">Editar</button>
+                <button className="botao_deletar">Excluir</button>
+              </div>
+            </li>
+          ))}
+        </ul>
+        <p className="subtitulo">Adicionar novo número</p>
+        <form onSubmit={handleSubmit}>
+          <label className="span_formulario" htmlFor="numero">
+            DDD e numero:
+          </label>
+          <div className="flex">
+            <input
+              className="input_formulario"
+              type="text"
+              id="ddd"
+              value={ddd}
+              onChange={(event) => setDdd(event.target.value)}
+            />
+            <input
+              className="input_formulario"
+              type="text"
+              id="numero"
+              value={numero}
+              onChange={(event) => setNumero(event.target.value)}
+            />
+          </div>
+          <button
+            className="submit_formulario"
+            type="submit"
+            onClick={() => {
+              setTelefones([...telefones, { id: null, ddd, numero }]);
+              setDdd("");
+              setNumero("");
+            }}
+          >
+            Salvar
+          </button>
+        </form>
+        <div className="flex gap-2">
+          <button className="botao_comum">
+            <Link href={"/cliente/gerson"}>Dados basicos</Link>
+          </button>
+          <button className="botao_comum">
+            <Link href={"/cliente/documentos"}>Documentos</Link>
+          </button>
         </div>
-        <button
-          type="submit"
-          onClick={() => {
-            setTelefones([...telefones, { ddd, numero }]);
-            setDdd("");
-            setNumero("");
-          }}
-        >
-          Cadastrar
-        </button>
-      </form>
-      <button>Dados basicos do cliente</button>
-      <button>
-        <Link href={"/cliente/documentos"}>
-        Documentos
-        </Link>
-        </button>
-    </div>
-  );
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <h1>Clientes não titulares não podem alterar os telefones</h1>
+      </div>
+    );
+  }
 };
 
 export default TelefonesCadastro;

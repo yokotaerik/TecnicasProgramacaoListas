@@ -17,17 +17,68 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  @apply text-black
 }
+
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
+
+.span_formulario {
+  @apply block text-sm font-medium text-gray-700;
+}
+
+.input_formulario {
+  @apply mt-1 block w-full px-3 py-2 border
+  border-gray-300 rounded-md shadow-sm 
+  focus:outline-none focus:ring-indigo-500
+  focus:border-indigo-500 sm:text-sm;
+}
+
+.titulo_formulario {
+  @apply block text-4xl font-medium text-gray-700;
+}
+
+.subtitulo {
+  @apply block text-2xl font-medium text-gray-700;
+}
+
+.texto_comum {
+  @apply block text-lg font-medium text-gray-700;
+}
+
+.botao_deletar{
+  @apply mt-2 justify-center py-2 px-4 border
+  border-transparent rounded-md shadow-sm text-sm
+  font-medium text-white bg-red-600 hover:bg-red-700
+  focus:outline-none focus:ring-2 focus:ring-offset-2
+  focus:ring-red-500;
+}
+
+.botao_editar{
+  @apply mt-2 justify-center py-2 px-4 border
+  border-transparent rounded-md shadow-sm text-sm
+  font-medium text-white bg-blue-600 hover:bg-blue-700
+  focus:outline-none focus:ring-2 focus:ring-offset-2
+  focus:ring-blue-500;
+}
+
+.botao_comum {
+  @apply mt-2 justify-center py-2 px-4 border
+  border-transparent rounded-md shadow-sm text-sm
+  font-medium text-white bg-gray-600 hover:bg-gray-700
+  focus:outline-none focus:ring-2 focus:ring-offset-2
+  focus:ring-gray-500;
+}
+
+.submit_formulario {
+  @apply mt-2 w-full flex justify-center py-2 px-4 border
+  border-transparent rounded-md shadow-sm text-sm
+  font-medium text-white bg-indigo-600 hover:bg-indigo-700
+  focus:outline-none focus:ring-2 focus:ring-offset-2
+  focus:ring-indigo-500;
+}
+

@@ -35,6 +35,8 @@ export default class CadastroClienteDependente extends Processo {
         cliente.Endereco = titular.Endereco.clonar() as Endereco
         cliente.Telefones.push(... titular.Telefones)
 
+        cliente.Titular = titular
+        titular.Dependentes.push(cliente)
         armazem.Clientes.push(cliente)
 
         console.log('Finalizando o cadastro do cliente...')

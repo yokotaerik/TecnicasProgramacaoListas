@@ -20,6 +20,7 @@ export default class TipoEdicaoCliente extends Processo {
 
         while(this.execucao){
             this.menu.mostrar()
+            console.log("Lembre-se não é possível editar endereço e telefone de dependentes")
             this.opcao = this.entrada.receberNumero('Qual opção desejada?')
             
             switch (this.opcao) {

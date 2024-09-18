@@ -21,6 +21,10 @@ export default class TipoTelefone extends Processo {
     processar(): void {
         this.menu.mostrar()
         this.opcao = this.entrada.receberNumero('Qual a opção desejada?')
+        if(!this.cliente.isTitular()){
+            console.log("Cliente dependetnes não podem editar telefones")
+            return
+        }
         switch (this.opcao) {
             case 1:
                 new CadastroTelefone(this.cliente).processar()
@@ -30,6 +34,7 @@ export default class TipoTelefone extends Processo {
                 break
             case 3:
                 new RemoverTelefone(this.cliente).processar()
+                break
             default:
                 console.log('Opção não entendida... :(')
         }

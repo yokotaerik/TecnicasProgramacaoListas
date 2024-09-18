@@ -13,8 +13,8 @@ const Acomodacoes: React.FC = () => {
   ];
   return (
     <div>
-      <h1 className="titulo_formulario">Acomodações ocupadas</h1>
-      <button className="botao_comum"> <Link href={"/acomodacoes/historico"}>  Histórico de acomodações</Link> </button>
+      <h1 className="titulo_formulario">Acomodações</h1>
+      <button className="botao_comum"> <Link href={"/acomodacoes"}> Voltar </Link></button>
       {tiposAcomodacao.map((tipo, index) => (
         <div key={index}>
           <div className="flex gap-5 items-center">

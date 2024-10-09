@@ -28,8 +28,8 @@ export default class BuscarCliente extends Processo {
             console.log('Cliente não encontrado :(');
             this.processar();   
         } else {
-            if(this.imprimir){
-                new ImpressaorCliente(cliente).imprimir();
+            if(this.imprimir == true){
+                console.log(new ImpressaorCliente(cliente).imprimir());
             }
             return cliente;
         }

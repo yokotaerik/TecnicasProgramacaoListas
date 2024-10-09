@@ -31,8 +31,7 @@ export default class buscarDepedentes extends Processo {
             if (cliente.Dependentes != null && cliente.Dependentes.length > 0) 
             {
                 console.log('Dependentes do cliente: ')
-                console.log((cliente as Cliente)
-                    .Dependentes.map(d => new ImpressaorCliente(d).imprimir()));
+                cliente.Dependentes.map(d => console.log(new ImpressaorCliente(d).imprimir()));
             } else
             {
                 console.log('Cliente não possui dependentes')

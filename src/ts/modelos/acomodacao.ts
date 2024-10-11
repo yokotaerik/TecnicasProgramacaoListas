@@ -10,6 +10,7 @@ export default class Acomodacao {
     private climatizacao: Boolean
     private garagem: number
     private hospedagem: Hospedagem[] = []
+    private qntDisponveis: number
 
     constructor(nomeAcomadacao: NomeAcomadacao, camaSolteiro: number, camaCasal: number,
         suite: number, climatizacao: Boolean, garagem: number) {
@@ -19,6 +20,7 @@ export default class Acomodacao {
         this.suite = suite
         this.climatizacao = climatizacao
         this.garagem = garagem
+        this.qntDisponveis = 10
     }
 
     public get NomeAcomadacao() { return this.nomeAcomadacao }
@@ -28,5 +30,7 @@ export default class Acomodacao {
     public get Climatizacao() { return this.climatizacao }
     public get Garagem() { return this.garagem }
     public get Hospedagem() { return this.hospedagem }  
+
+    public get QntDisponiveis() { return this.qntDisponveis - this.Hospedagem.filter(h => h.DataSaida >= new Date()).length }
 
 }

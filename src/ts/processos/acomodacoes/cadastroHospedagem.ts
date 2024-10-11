@@ -21,9 +21,15 @@ export default class CadastroHospedagem extends Processo {
 
     processar(): void {
         let acomocadao = this.acomodacoes.find(a => a.NomeAcomadacao == this.tipoAcomodacao)
+
         if(acomocadao == undefined) {
            console.log("Não possuimos essa acomodação")
            return
+        }
+
+        if(acomocadao.QntDisponiveis <= 0){
+            console.log("Não possuimos vagas disponíveis")
+            return
         }
 
         let numeroHospedes = acomocadao?.CamaCasal * 2 + acomocadao?.CamaSolteiro;

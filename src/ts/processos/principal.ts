@@ -5,6 +5,7 @@ import MenuPrincipal from "../menus/menuPricipal"
 import CadastroHospedagem from "./acomodacoes/cadastroHospedagem"
 import ListagemAcomodacoes from "./acomodacoes/listagemAcomodacoes"
 import ListagemAcomodacoesAtivas from "./acomodacoes/listagemAcomodacoesAtivas"
+import ListagemHistoricoHospedagens from "./acomodacoes/listagemHospedagens"
 import TipoCadastroCliente from "./selecionadores/tipoCadastroCliente"
 import TipoEdicaoCliente from "./selecionadores/tipoEdicaoCliente"
 import TipoListagemClientes from "./selecionadores/tipoListagemClientes"
@@ -45,6 +46,9 @@ export default class Principal extends Processo {
             case 7:
                 new ListagemAcomodacoesAtivas().processar()
                 break   
+            case 8:
+                new ListagemHistoricoHospedagens().processar()
+                break
             case 0: 
                 this.execucao = false
                 console.log('Até logo!')

@@ -10,6 +10,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @SpringBootApplication
 public class AutomanagerApplication {
 
@@ -22,6 +24,12 @@ public class AutomanagerApplication {
 
 		@Autowired
 		private AcomodacaoRepositorio acomodacaoRepositorio;
+
+		@Autowired
+		private HospedagemRepositorio hospedagemRepositorio;
+
+		@Autowired
+		private ClienteRepositorio clienteRepositorio;
 
 		@Override
 		public void run(ApplicationArguments args) throws Exception {
@@ -40,6 +48,17 @@ public class AutomanagerApplication {
 			acomodacaoRepositorio.save(familiaSimples);
 			acomodacaoRepositorio.save(familiaMais);
 			acomodacaoRepositorio.save(familiaSuper);
+
+			Cliente erik = new Cliente("Erik Camara Yokota", "Yokota", LocalDateTime.now());
+			Endereco enderecoErik = new Endereco("SP", "SJC", "Jd.Satelite", "Marica", "BR", "12230100", "nenhuma");
+			erik.setEndereco(enderecoErik);
+			clienteRepositorio.save(erik);
+
+			Hospedagem hospedagemErik = new Hospedagem(TipoAcomodacao.SolteiroSimples, LocalDateTime.now().minusDays(2), LocalDateTime.now().plusDays(1));
+			hospedagemErik.getHospedes().add(erik);
+
+			hospedagemRepositorio.save(hospedagemErik);
+
 		}
 	}
 }

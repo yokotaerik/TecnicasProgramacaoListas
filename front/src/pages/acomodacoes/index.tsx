@@ -3,8 +3,6 @@ import { AcomodacoesInfos } from "@/types/clienteTypes";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-
-
 const Acomodacoes: React.FC = () => {
   const [acomodacoes, setAcomodacoes] = useState<AcomodacoesInfos[]>([]);
 

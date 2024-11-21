@@ -4,9 +4,14 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.hateoas.RepresentationModel;
 
-@Data
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Endereco extends RepresentationModel<Endereco> {
@@ -31,6 +36,15 @@ public class Endereco extends RepresentationModel<Endereco> {
 	@OneToOne
 	private Cliente cliente;
 
+	public Endereco(String estado, String cidade, String bairro, String rua, String pais, String codigoPostal, String informacoesAdicionais) {
+		this.estado = estado;
+		this.cidade = cidade;
+		this.bairro = bairro;
+		this.rua = rua;
+		this.pais = pais;
+		this.codigoPostal = codigoPostal;
+		this.informacoesAdicionais = informacoesAdicionais;
+	}
 
 	public Endereco clonar() {
 		Endereco novo = new Endereco();

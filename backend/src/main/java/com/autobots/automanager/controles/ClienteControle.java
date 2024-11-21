@@ -105,7 +105,7 @@ public class ClienteControle {
 
 			repositorio.save(cliente);
 
-			return ResponseEntity.ok().body(cliente);
+			return ResponseEntity.status(201).body(cliente);
 		}
 	}
 

@@ -63,12 +63,12 @@ public class HospedagemController {
         var hospedagens = hospedagemRepositorio.findAll();
 
         List<Hospedagem> hospedagensOcupadas = hospedagens.stream()
-                .filter(hospedagem -> hospedagem.getDataSaida().isBefore(LocalDateTime.now()))
+                .filter(Hospedagem::isOcupada)
                 .toList();
 
         List<HospedagemListDTO> response = new ArrayList<>();
-    
-        hospedagens.forEach(hospedagem -> {
+
+        hospedagensOcupadas.forEach(hospedagem -> {
             response.add(mapToHospedagemDTO(hospedagem));
         });
 
@@ -79,12 +79,22 @@ public class HospedagemController {
     public ResponseEntity<?> cadastrarHospedagem(@RequestBody CadastroHospedagemDTO data) {
         var hospedes = new ArrayList<Cliente>();
 
+        if(data.getDataEntrada() == null || data.getDataSaida() == null){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Data de entrada ou saída não informada");
+        }
+
         for (String doc : data.getDocumentosHospedes()) {
             if(doc.isEmpty()){
                 continue;
             }
             Optional<Cliente> cliente = clienteRepositorio.buscarClienteNumeroDoc(doc);
             if (cliente.isPresent()) {
+
+                for (Hospedagem hospedagem : cliente.get().getHospedagens()) {
+                    if (hospedagem.isOcupada()) {
+                        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Cliente " + cliente.get().getNome() + " já está hospedado");
+                    }
+                }
                 hospedes.add(cliente.get());
             } else {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente não encontrado");

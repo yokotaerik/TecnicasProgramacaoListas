@@ -3,9 +3,7 @@
 ## Para as atividades 1 2 3 4 e 5 (front)
 <p> Instalar as depdencias com o comando npm i </p> 
 
-
-
-## Para as atividades 1 2 e 3
+## Para as atividades  2 e 3
 <p> npx tsc Para compilar </p>
 <p> Rodar o arquivo app.js com node {caminho até o arquivo} </p> 
 
